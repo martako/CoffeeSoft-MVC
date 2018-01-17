@@ -1,10 +1,10 @@
-﻿@model CoffeeSoft.Models.Florist
+﻿@model CoffeeSoft.Models.CoffeeShop
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Usuń kwiaciarnię - @Html.DisplayFor(model => model.FloristName)</h2>
+<h2>Usuń kwiaciarnię - @Html.DisplayFor(model => model.CoffeeShopName)</h2>
 
 <h3>Czy na pewno chcesz usunąć tę kwiaciarnię?</h3>
 <div>
@@ -12,18 +12,18 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FloristName)
+            @Html.DisplayNameFor(model => model.CoffeeShopName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FloristName)
+            @Html.DisplayFor(model => model.CoffeeShopName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FloristAddress)
+            @Html.DisplayNameFor(model => model.CoffeeShopAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FloristAddress)
+            @Html.DisplayFor(model => model.CoffeeShopAddress)
         </dd>
 
     </dl>

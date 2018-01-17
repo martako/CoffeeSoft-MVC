@@ -18,7 +18,7 @@ namespace CoffeeSoft.Controllers
         // GET: Invoice
         public ActionResult Index()
         {
-            var invoices = db.Invoices.Include(i => i.Florist).Include(i => i.Order).Include(i => i.Warehouse);
+            var invoices = db.Invoices.Include(i => i.CoffeeShop).Include(i => i.Order).Include(i => i.Warehouse);
             return View(invoices.ToList());
         }
 
@@ -40,7 +40,7 @@ namespace CoffeeSoft.Controllers
         // GET: Invoice/Create
         public ActionResult Create()
         {
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName");
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName");
             ViewBag.Id = new SelectList(db.Orders, "Id", "OrderNo");
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName");
             return View();
@@ -51,7 +51,7 @@ namespace CoffeeSoft.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,InvoiceNo,WarehouseId,FloristId")] Invoice invoice)
+        public ActionResult Create([Bind(Include = "Id,InvoiceNo,WarehouseId,CoffeeShopId")] Invoice invoice)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace CoffeeSoft.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName", invoice.FloristId);
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName", invoice.CoffeeShopId);
             ViewBag.Id = new SelectList(db.Orders, "Id", "OrderNo", invoice.Id);
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName", invoice.WarehouseId);
             return View(invoice);
@@ -78,7 +78,7 @@ namespace CoffeeSoft.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName", invoice.FloristId);
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName", invoice.CoffeeShopId);
             ViewBag.Id = new SelectList(db.Orders, "Id", "OrderNo", invoice.Id);
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName", invoice.WarehouseId);
             return View(invoice);
@@ -89,7 +89,7 @@ namespace CoffeeSoft.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,InvoiceNo,WarehouseId,FloristId")] Invoice invoice)
+        public ActionResult Edit([Bind(Include = "Id,InvoiceNo,WarehouseId,CoffeeShopId")] Invoice invoice)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace CoffeeSoft.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName", invoice.FloristId);
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName", invoice.CoffeeShopId);
             ViewBag.Id = new SelectList(db.Orders, "Id", "OrderNo", invoice.Id);
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName", invoice.WarehouseId);
             return View(invoice);

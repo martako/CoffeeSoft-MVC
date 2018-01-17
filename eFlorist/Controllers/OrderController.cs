@@ -16,10 +16,10 @@ namespace CoffeeSoft.Controllers
         private CoffeeSoftDbContext db = new CoffeeSoftDbContext();
 
         // GET: Order
-        public ActionResult Index(int? floristId, int? warehouseId)
+        public ActionResult Index(int? CoffeeShopId, int? warehouseId)
         {
             ViewBag.Warehouses = db.Warehouses.ToList();
-            ViewBag.Florists = db.Florists.ToList();
+            ViewBag.CoffeeShops = db.CoffeeShops.ToList();
             var orders = db.Orders.Include(o => o.Invoice).Include(o => o.OrderPayment).Include(o => o.OrderStatus).Include(o => o.OrderTruck).Include(o => o.Warehouse);
 
             if (warehouseId.HasValue)
@@ -27,9 +27,9 @@ namespace CoffeeSoft.Controllers
                 orders = orders.Where(x => x.WarehouseId == warehouseId.Value);
             }
 
-            if (floristId.HasValue)
+            if (CoffeeShopId.HasValue)
             {
-                orders = orders.Where(x => x.FloristId == floristId.Value);
+                orders = orders.Where(x => x.CoffeeShopId == CoffeeShopId.Value);
             }
             return View(orders.ToList());
         }
@@ -59,7 +59,7 @@ namespace CoffeeSoft.Controllers
             ViewBag.OrderStatusId = new SelectList(db.StatusTypes, "Id", "StatusName");
             ViewBag.OrderTruckId = new SelectList(db.Trucks, "Id", "TruckName");
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName");
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName");
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName");
 
             return View(new Order { OrderCreatedDate = DateTime.Now });
         }
@@ -69,7 +69,7 @@ namespace CoffeeSoft.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,OrderNo,OrderCreatedDate,IsAccepted,IsRejected,OrderStatusId,OrderTruckId,WarehouseId,OrderPaymentId,FloristId,InvoiceId")] Order order)
+        public ActionResult Create([Bind(Include = "Id,OrderNo,OrderCreatedDate,IsAccepted,IsRejected,OrderStatusId,OrderTruckId,WarehouseId,OrderPaymentId,CoffeeShopId,InvoiceId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace CoffeeSoft.Controllers
                 {
                     InvoiceNo = ramdomInvoiceNo.ToString(),
                     WarehouseId = order.WarehouseId,
-                    FloristId = order.FloristId
+                    CoffeeShopId = order.CoffeeShopId
                 };
 
 
@@ -103,7 +103,7 @@ namespace CoffeeSoft.Controllers
             ViewBag.OrderStatusId = new SelectList(db.StatusTypes, "Id", "StatusName", order.OrderStatusId);
             ViewBag.OrderTruckId = new SelectList(db.Trucks, "Id", "TruckName", order.OrderTruckId);
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName", order.WarehouseId);
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName", order.FloristId);
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName", order.CoffeeShopId);
 
 
             return View(order);
@@ -127,7 +127,7 @@ namespace CoffeeSoft.Controllers
             ViewBag.OrderStatusId = new SelectList(db.StatusTypes, "Id", "StatusName", order.OrderStatusId);
             ViewBag.OrderTruckId = new SelectList(db.Trucks, "Id", "TruckName", order.OrderTruckId);
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName", order.WarehouseId);
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName", order.FloristId);
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName", order.CoffeeShopId);
 
             return View(order);
         }
@@ -137,12 +137,12 @@ namespace CoffeeSoft.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,OrderNo,OrderCreatedDate,IsAccepted,IsRejected,OrderStatusId,OrderTruckId,WarehouseId,OrderPaymentId,FloristId,InvoiceId")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,OrderNo,OrderCreatedDate,IsAccepted,IsRejected,OrderStatusId,OrderTruckId,WarehouseId,OrderPaymentId,CoffeeShopId,InvoiceId")] Order order)
         {
             if (ModelState.IsValid)
             {
                 var invoice = db.Invoices.Single(x => x.Order.Id == order.Id);
-                invoice.FloristId = order.FloristId;
+                invoice.CoffeeShopId = order.CoffeeShopId;
                 invoice.WarehouseId = order.WarehouseId;
 
                 db.Entry(invoice).State = EntityState.Modified;
@@ -156,7 +156,7 @@ namespace CoffeeSoft.Controllers
             ViewBag.OrderStatusId = new SelectList(db.StatusTypes, "Id", "StatusName", order.OrderStatusId);
             ViewBag.OrderTruckId = new SelectList(db.Trucks, "Id", "TruckName", order.OrderTruckId);
             ViewBag.WarehouseId = new SelectList(db.Warehouses, "Id", "WarehouseName", order.WarehouseId);
-            ViewBag.FloristId = new SelectList(db.Florists, "Id", "FloristName", order.FloristId);
+            ViewBag.CoffeeShopId = new SelectList(db.CoffeeShops, "Id", "CoffeeShopName", order.CoffeeShopId);
 
             return View(order);
         }

@@ -16,7 +16,7 @@ namespace CoffeeSoft.Models
         public virtual WarehouseType WarehouseType { get; set; }
         public virtual ICollection<Order> OrderList { get; set; }
         public virtual ICollection<Invoice> InvoiceList { get; set; }
-        public virtual ICollection<Florist> FloristList { get; set; }
+        public virtual ICollection<CoffeeShop> CoffeeShopList { get; set; }
         public int? WarehouseTypeId { get; set; }
     }
 }

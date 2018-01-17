@@ -6,13 +6,13 @@ using System.Web;
 
 namespace CoffeeSoft.Models
 {
-    public class Florist
+    public class CoffeeShop
     {
         public int Id { get; set; }
-        [Display(Name = "Kwiaciarnia")]
-        public string FloristName { get; set; }
+        [Display(Name = "Kawiarnia")]
+        public string CoffeeShopName { get; set; }
         [Display(Name = "Adres")]
-        public string FloristAddress { get; set; }
+        public string CoffeeShopAddress { get; set; }
         public virtual ICollection<Item> ItemsList { get; set; }
         public virtual ICollection<Order> OrderList { get; set; }
         public virtual ICollection<Invoice> InvoiceList { get; set; }

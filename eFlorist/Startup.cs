@@ -70,10 +70,10 @@ namespace CoffeeSoft
             }
 
             // pracownik kwiaciarni    
-            if (!roleManager.RoleExists("Florist Manager"))
+            if (!roleManager.RoleExists("CoffeeShop Manager"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Florist Manager";
+                role.Name = "CoffeeShop Manager";
                 roleManager.Create(role);
 
             }

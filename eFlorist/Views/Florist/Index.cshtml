@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CoffeeSoft.Models.Florist>
+﻿@model IEnumerable<CoffeeSoft.Models.CoffeeShop>
 
 @{
     ViewBag.Title = "Index";
@@ -18,10 +18,10 @@
                         <table class="table">
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.FloristName)
+                                    @Html.DisplayNameFor(model => model.CoffeeShopName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.FloristAddress)
+                                    @Html.DisplayNameFor(model => model.CoffeeShopAddress)
                                 </th>
                                 <th></th>
                             </tr>
@@ -30,10 +30,10 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FloristName)
+                                        @Html.DisplayFor(modelItem => item.CoffeeShopName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FloristAddress)
+                                        @Html.DisplayFor(modelItem => item.CoffeeShopAddress)
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edycja", "Edit", new { id = item.Id }) |

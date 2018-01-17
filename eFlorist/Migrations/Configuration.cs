@@ -67,27 +67,27 @@
             context.ItemTypes.AddOrUpdate(i => i.ItemsName,
             new ItemType
             {
-                ItemsName = "Kwiaty",
+                ItemsName = "Kawa ziarnista",
                 Items = new List<Item>()
             },
             new ItemType
             {
-                ItemsName = "Nasiona",
+                ItemsName = "Kawa zmielona",
                 Items = new List<Item>()
             },
             new ItemType
             {
-                ItemsName = "Doniczki",
+                ItemsName = "Kubki ceramiczne",
                 Items = new List<Item>()
             },
             new ItemType
             {
-                ItemsName = "Opakowania prezentowe",
+                ItemsName = "Kubki termiczne",
                 Items = new List<Item>()
             },
             new ItemType
             {
-                ItemsName = "Ozdoby",
+                ItemsName = "Herbata liściasta",
                 Items = new List<Item>()
             });
 
@@ -132,7 +132,7 @@
                     WarehouseType = type1,
                     OrderList = new List<Order>(),
                     InvoiceList = new List<Invoice>(),
-                    FloristList = new List<Florist>()
+                    CoffeeShopList = new List<CoffeeShop>()
                 });
             }
             if (!context.Trucks.Any())

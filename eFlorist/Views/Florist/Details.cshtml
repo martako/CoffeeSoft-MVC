@@ -1,28 +1,28 @@
-﻿@model CoffeeSoft.Models.Florist
+﻿@model CoffeeSoft.Models.CoffeeShop
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Szczegóły kwiaciarni - @Html.DisplayFor(model => model.FloristName)</h2>
+<h2>Szczegóły kwiaciarni - @Html.DisplayFor(model => model.CoffeeShopName)</h2>
 
 <div>
   
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FloristName)
+            @Html.DisplayNameFor(model => model.CoffeeShopName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FloristName)
+            @Html.DisplayFor(model => model.CoffeeShopName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FloristAddress)
+            @Html.DisplayNameFor(model => model.CoffeeShopAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FloristAddress)
+            @Html.DisplayFor(model => model.CoffeeShopAddress)
         </dd>
 
     </dl>

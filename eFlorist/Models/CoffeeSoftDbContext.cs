@@ -6,7 +6,7 @@ namespace CoffeeSoft.Models
 {
     public class CoffeeSoftDbContext : DbContext
     { 
-        public DbSet<Florist> Florists { get; set; }
+        public DbSet<CoffeeShop> CoffeeShops { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemType> ItemTypes { get; set; }
@@ -43,9 +43,9 @@ namespace CoffeeSoft.Models
                 .HasForeignKey<int?>(s => s.WarehouseId);
 
             modelBuilder.Entity<Order>()
-               .HasRequired<Florist>(s => s.Florist)
+               .HasRequired<CoffeeShop>(s => s.CoffeeShop)
                .WithMany(g => g.OrderList)
-               .HasForeignKey<int?>(s => s.FloristId);
+               .HasForeignKey<int?>(s => s.CoffeeShopId);
 
             modelBuilder.Entity<Order>()
                 .HasRequired<PaymentType>(s => s.OrderPayment)
@@ -68,9 +68,9 @@ namespace CoffeeSoft.Models
                .HasForeignKey<int?>(s => s.WarehouseId);
 
             modelBuilder.Entity<Invoice>()
-              .HasRequired<Florist>(s => s.Florist)
+              .HasRequired<CoffeeShop>(s => s.CoffeeShop)
               .WithMany(g => g.InvoiceList)
-              .HasForeignKey<int?>(s => s.FloristId);
+              .HasForeignKey<int?>(s => s.CoffeeShopId);
 
             modelBuilder.Entity<Item>()
               .HasRequired<ItemType>(s => s.ItemType)
@@ -88,24 +88,24 @@ namespace CoffeeSoft.Models
               .HasForeignKey<int?>(s => s.OrderId);
 
             // configures many-to-many relationship
-            modelBuilder.Entity<Florist>()
+            modelBuilder.Entity<CoffeeShop>()
                 .HasMany<Warehouse>(s => s.WarehouseList)
-                .WithMany(c => c.FloristList)
+                .WithMany(c => c.CoffeeShopList)
                 .Map(cs =>
                 {
-                    cs.MapLeftKey("FloristRefId");
+                    cs.MapLeftKey("CoffeeShopRefId");
                     cs.MapRightKey("WarehouseRefId");
-                    cs.ToTable("FloristWarehouse");
+                    cs.ToTable("CoffeeShopWarehouse");
                 });
 
             modelBuilder.Entity<Item>()
-                .HasMany<Florist>(s => s.Florists)
+                .HasMany<CoffeeShop>(s => s.CoffeeShops)
                 .WithMany(c => c.ItemsList)
                 .Map(cs =>
                 {
                     cs.MapLeftKey("ItemRefId");
-                    cs.MapRightKey("FloristRefId");
-                    cs.ToTable("ItemFlorist");
+                    cs.MapRightKey("CoffeeShopRefId");
+                    cs.ToTable("ItemCoffeeShop");
                 });
 
             // configures one-to-one relationship

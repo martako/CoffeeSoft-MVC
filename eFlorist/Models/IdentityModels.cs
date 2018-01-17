@@ -21,7 +21,7 @@ namespace CoffeeSoft.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("EFloristDbContext", throwIfV1Schema: false)//DefaultConnection
+            : base("ECoffeeShopDbContext", throwIfV1Schema: false)//DefaultConnection
         {
         }
 

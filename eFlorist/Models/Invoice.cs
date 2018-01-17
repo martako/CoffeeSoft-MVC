@@ -12,9 +12,9 @@ namespace CoffeeSoft.Models
         [Display(Name = "Numer faktury")]
         public string InvoiceNo { get; set; }
         public virtual Warehouse Warehouse { get; set; }
-        public virtual Florist Florist { get; set; }
+        public virtual CoffeeShop CoffeeShop { get; set; }
         public virtual Order Order { get; set; }
         public int? WarehouseId { get; set; }
-        public int? FloristId { get; set; }
+        public int? CoffeeShopId { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace eFlorist.Migrations
+namespace eCoffeeShop.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
