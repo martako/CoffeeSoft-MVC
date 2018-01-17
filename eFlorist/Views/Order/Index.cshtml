@@ -1,0 +1,116 @@
+﻿@model IEnumerable<CoffeeSoft.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista zamówień</h2>
+
+<p class="button-add">
+    @Html.ActionLink("Dodaj zamówienie", "Create")
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Filtry - Magazyny</h3>
+        <ul>
+            @foreach (var item in ViewBag.Warehouses)
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Order", new { warehouseId= item.Id })">@item.WarehouseName</a>
+
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h3>Filtry - Kwiaciarnie</h3>
+        <ul>
+            @foreach (var item in ViewBag.Florists)
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Order", new { floristId= item.Id })">@item.FloristName</a>
+                </li>
+
+            }
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderNo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderCreatedDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Florist.FloristName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Invoice.InvoiceNo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderPayment.PaymentName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderTruck.TruckName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Warehouse.WarehouseName)
+                                </th>
+                               
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderCreatedDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Florist.FloristName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Invoice.InvoiceNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderPayment.PaymentName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderStatus.StatusName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderTruck.TruckName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Warehouse.WarehouseName)
+                                    </td>
+                                  
+                                    <td>
+                                        @Html.ActionLink("Edycja", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

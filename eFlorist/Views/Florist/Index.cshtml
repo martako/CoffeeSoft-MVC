@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CoffeeSoft.Models.Florist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista kwiaciarni</h2>
+
+<p class="button-add">
+    @Html.ActionLink("Dodaj kwiaciarnię", "Create")
+</p>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FloristName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FloristAddress)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FloristName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FloristAddress)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edycja", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

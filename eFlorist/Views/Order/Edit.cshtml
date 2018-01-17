@@ -1,0 +1,177 @@
+﻿@model CoffeeSoft.Models.Order
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edytuj zamówienie - @Html.DisplayFor(model => model.OrderNo)</h2>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-content">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FloristId, "Kwiaciarnia", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("FloristId", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.FloristId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderCreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.OrderCreatedDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.OrderCreatedDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.OrderNo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsAccepted, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.IsAccepted)
+                                                @Html.ValidationMessageFor(model => model.IsAccepted, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsRejected, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.IsRejected)
+                                                @Html.ValidationMessageFor(model => model.IsRejected, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderStatusId, "Status zamówienia", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("OrderStatusId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.OrderStatusId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderTruckId, "Pojazd", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("OrderTruckId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.OrderTruckId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.WarehouseId, "Baza magazynowa", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("WarehouseId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.WarehouseId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderPaymentId, "Typ płatności", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("OrderPaymentId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.OrderPaymentId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderItems, "Pozycje zamówienia", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <!--wylistowanie dodanych-->
+                                            <table>
+                                                @{
+                                                    try
+                                                    {
+                                                        foreach (var item in Model.OrderItems)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Item.ItemName)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ItemQuantity)
+                                                                </td>
+                                                            </tr>
+                                                        }
+
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+
+                                                    }
+                                                }
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <p class="button-add">
+                                                @Html.ActionLink("Dodaj pozycję", "CreateByOrderId", "OrderItem", new { orderId = Model.Id }, null)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Zapisz" class="btn btn-default btn-accept" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                                }
+
+                    <div>
+                        @Html.ActionLink("Wróć do listy zamówień", "Index")
+                    
+                    </div>
+
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
+          
+
+        </div>
+    </div>
+</div>

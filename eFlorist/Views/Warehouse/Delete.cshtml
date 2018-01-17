@@ -1,0 +1,47 @@
+﻿@model CoffeeSoft.Models.Warehouse
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuń bazę magazynową - @Html.DisplayFor(model => model.WarehouseName)</h2>
+
+<h3>Czy na pewno chcesz usunąć tę bazę?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WarehouseType.WarehouseTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarehouseType.WarehouseTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarehouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarehouseName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WarehouseAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarehouseAddress)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default btn-delete" /> |
+            @Html.ActionLink("Wróć do listy baz magazynowych", "Index")
+        </div>
+    }
+</div>

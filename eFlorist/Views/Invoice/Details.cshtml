@@ -1,0 +1,50 @@
+﻿@model CoffeeSoft.Models.Invoice
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Szczegóły - @Html.DisplayFor(model => model.InvoiceNo)</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Florist.FloristName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Florist.FloristName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.OrderNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.OrderNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Warehouse.WarehouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warehouse.WarehouseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Wróć do listy faktur", "Index")
+</p>

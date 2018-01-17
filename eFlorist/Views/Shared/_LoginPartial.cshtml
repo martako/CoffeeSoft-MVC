@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole("Admin"))
+        {
+            <li>@Html.ActionLink("Dodaj użytkownika", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        }
+        <li>
+            <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="material-icons">person</i>
+            </a>
+        </li>
+        <li>
+            <a>Witaj, @User.Identity.GetUserName()!</a>
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

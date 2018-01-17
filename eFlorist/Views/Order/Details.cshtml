@@ -1,0 +1,117 @@
+﻿@model CoffeeSoft.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Szczegóły zamówienia - @Html.DisplayFor(model => model.OrderNo)</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Florist.FloristName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Florist.FloristName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Invoice.InvoiceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.InvoiceNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderPayment.PaymentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderPayment.PaymentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTruck.TruckName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderTruck.TruckName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Warehouse.WarehouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warehouse.WarehouseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderCreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderCreatedDate)
+        </dd>
+
+
+     
+
+    </dl>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrderItems, "Pozycje zamówienia", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <!--wylistowanie dodanych-->
+            <table>
+                @{
+                    try
+                    {
+                        foreach (var item in Model.OrderItems)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Item.ItemName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ItemQuantity)
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+            </table>
+        </div>
+    </div>
+
+</div>
+<p>
+ 
+    @Html.ActionLink("Wróć do listy zamówień", "Index")
+</p>

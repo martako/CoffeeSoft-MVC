@@ -1,0 +1,42 @@
+﻿@model CoffeeSoft.Models.Warehouse
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Szczegóły bazy magazynowej - @Html.DisplayFor(model => model.WarehouseName)</h2>
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WarehouseType.WarehouseTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarehouseType.WarehouseTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarehouseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarehouseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarehouseAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarehouseAddress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edycja", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Wróć do listy baz magazynowych", "Index")
+</p>

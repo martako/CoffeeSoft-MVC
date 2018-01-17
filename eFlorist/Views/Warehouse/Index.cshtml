@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CoffeeSoft.Models.Warehouse>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista baz magazynowych</h2>
+
+<p class="button-add">
+    @Html.ActionLink("Dodaj bazę magazynową", "Create")
+</p>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.WarehouseType.WarehouseTypeName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.WarehouseName) - nazwa
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.WarehouseAddress) 
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.WarehouseType.WarehouseTypeName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.WarehouseName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.WarehouseAddress)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edycja", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model CoffeeSoft.Models.Florist
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuń kwiaciarnię - @Html.DisplayFor(model => model.FloristName)</h2>
+
+<h3>Czy na pewno chcesz usunąć tę kwiaciarnię?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FloristName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloristName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FloristAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloristAddress)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default btn-delete" /> |
+            @Html.ActionLink("Wróć do listy kwiaciarni", "Index")
+        </div>
+    }
+</div>
