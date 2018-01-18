@@ -199,7 +199,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FloristController.cs" />
+    <Compile Include="Controllers\CoffeeShopController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201801171415122_newbaseforcoffee.cs" />
     <Compile Include="Migrations\201801171415122_newbaseforcoffee.Designer.cs">
       <DependentUpon>201801171415122_newbaseforcoffee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180949331_newdbb.cs" />
+    <Compile Include="Migrations\201801180949331_newdbb.Designer.cs">
+      <DependentUpon>201801180949331_newdbb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -385,11 +389,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Florist\Create.cshtml" />
-    <Content Include="Views\Florist\Delete.cshtml" />
-    <Content Include="Views\Florist\Details.cshtml" />
-    <Content Include="Views\Florist\Edit.cshtml" />
-    <Content Include="Views\Florist\Index.cshtml" />
+    <Content Include="Views\CoffeeShop\Create.cshtml" />
+    <Content Include="Views\CoffeeShop\Delete.cshtml" />
+    <Content Include="Views\CoffeeShop\Details.cshtml" />
+    <Content Include="Views\CoffeeShop\Edit.cshtml" />
+    <Content Include="Views\CoffeeShop\Index.cshtml" />
     <Content Include="Views\Invoice\Create.cshtml" />
     <Content Include="Views\Invoice\Delete.cshtml" />
     <Content Include="Views\Invoice\Details.cshtml" />
@@ -464,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801171415122_newbaseforcoffee.resx">
       <DependentUpon>201801171415122_newbaseforcoffee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180949331_newdbb.resx">
+      <DependentUpon>201801180949331_newdbb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
