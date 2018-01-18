@@ -224,10 +224,6 @@
     <Compile Include="Migrations\201801171415122_newbaseforcoffee.Designer.cs">
       <DependentUpon>201801171415122_newbaseforcoffee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801180949331_newdbb.cs" />
-    <Compile Include="Migrations\201801180949331_newdbb.Designer.cs">
-      <DependentUpon>201801180949331_newdbb.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CoffeeSoftDbContext.cs" />
@@ -468,9 +464,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801171415122_newbaseforcoffee.resx">
       <DependentUpon>201801171415122_newbaseforcoffee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801180949331_newdbb.resx">
-      <DependentUpon>201801180949331_newdbb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
